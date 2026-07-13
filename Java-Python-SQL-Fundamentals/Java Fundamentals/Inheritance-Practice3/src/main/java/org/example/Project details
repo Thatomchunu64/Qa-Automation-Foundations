@@ -1,0 +1,283 @@
+Project: Online Shopping System
+Goal
+
+Create a simple shopping application where a customer can log in and manage a shopping cart.
+
+This project practices:
+
+✅ Constructors
+✅ Encapsulation (private)
+✅ Object state (boolean)
+✅ Guard clauses
+✅ Inheritance
+✅ Composition
+✅ Return methods
+✅ Defensive programming
+Classes
+
+You will create 3 classes.
+
+Account (Parent)
+
+        ▲
+        │ extends
+
+CustomerAccount (Child)
+
+        │
+        │ HAS A
+
+ShoppingCart
+
+1️⃣ Account (Parent Class)
+
+This class represents any online account.
+
+Attributes (private)
+username
+email
+isLoggedIn
+Constructor
+
+Must receive:
+
+username
+email
+
+Default values:
+
+isLoggedIn = false
+Methods
+login()
+
+If already logged in
+
+Already logged in.
+
+Otherwise
+
+Logging in...
+
+Set
+
+isLoggedIn = true
+logout()
+
+If already logged out
+
+Already logged out.
+
+Otherwise
+
+Logging out...
+
+Set
+
+isLoggedIn = false
+getAccountInfo()
+
+Return
+
+Username:
+Email:
+Logged In:
+
+⭐ Hint
+
+Your child class will need to know whether the account is logged in.
+
+Think about how you solved this with Device.
+
+2️⃣ ShoppingCart (Composition Class)
+
+This class represents the customer's cart.
+
+Attributes
+cartName
+totalItems
+
+Both private.
+
+Constructor
+
+Receives
+
+cartName
+
+Default
+
+totalItems = 0
+Methods
+addItem()
+
+Increase
+
+totalItems++
+
+Print
+
+Item added.
+removeItem()
+
+If cart is empty
+
+Cart is already empty.
+
+Otherwise
+
+Decrease by one.
+
+Print
+
+Item removed.
+clearCart()
+
+If already empty
+
+Cart already empty.
+
+Otherwise
+
+Cart cleared.
+
+Set items to 0.
+
+displayCart()
+
+Print
+
+Cart Name:
+Items:
+
+
+3️⃣ CustomerAccount (Child Class)
+
+This class extends
+
+Account
+
+Attributes
+membershipLevel
+
+Examples
+
+Silver
+
+Gold
+
+Platinum
+
+Also include
+
+ShoppingCart shoppingCart;
+
+This is your composition.
+
+Constructor
+
+Receive
+
+username
+
+email
+
+membershipLevel
+
+Remember
+
+super(...)
+
+Create a shopping cart inside the constructor.
+
+Choose a default cart name like
+
+"My Shopping Cart"
+Methods
+addItemToCart()
+
+Before adding
+
+Check
+
+Is the customer logged in?
+
+If not
+
+Login first.
+
+Otherwise
+
+Call
+
+shoppingCart.addItem();
+removeItemFromCart()
+
+Same idea.
+
+Must be logged in.
+
+viewCart()
+
+Call
+
+shoppingCart.displayCart();
+
+upgradeMembership(String newLevel)
+
+If it's already that level
+
+Already using Gold membership.
+
+Otherwise
+
+Membership upgraded to Gold.
+
+Update the level.
+
+Main Class
+
+Create
+
+Customer 1
+
+Customer 2
+
+Try things like
+
+View cart before login.
+
+Login.
+
+Add 3 items.
+
+Remove 1 item.
+
+View cart.
+
+Upgrade membership.
+
+Logout.
+
+Try adding another item while logged out.
+⭐ Rules
+
+Just like your previous projects:
+
+Use guard clauses whenever possible.
+Don't make variables public.
+Change the object's state correctly (isLoggedIn, item count, etc.).
+Keep methods focused on one responsibility.
+Use comments if they help you understand your own code.
+📝 Your challenge
+
+This time, I want you to design a little more on your own. In the last few projects, you often asked, "What should happen here?" That's normal, but now you're ready to make some decisions yourself.
+
+For example, ask yourself:
+
+Should viewCart() require the user to be logged in, or should anyone be able to view it?
+Should logout() automatically clear the cart, or should the cart stay the same?
+Should a Platinum member behave differently from a Silver member right now, or is it enough just to store the membership level?
+
+There isn't always one "correct" answer. Part of becoming a good programmer is making reasonable design decisions and being able to explain why you chose them.
+
+Once you've finished it, send me all three classes and your Main class, and I'll mark it like a real coding assessment—looking at correctness, OOP design, readability, and whether you're thinking like a Java developer rather than just writing code.
