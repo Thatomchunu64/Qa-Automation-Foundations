@@ -34,6 +34,7 @@ Throughout these projects I worked on:
 | Computer Manager | Represents computer objects and their attributes. | Objects, Methods |
 | Library Book | Models books in a library system. | Inheritance, OOP |
 | Smartphone | Simulates smartphone functionality. | Constructors, Object Design |
+| Online Store | Basic Online store system. | Object state, Constructors, Inheritance, Composition|
 
 ---
 
