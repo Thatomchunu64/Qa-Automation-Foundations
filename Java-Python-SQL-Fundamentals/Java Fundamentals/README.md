@@ -22,6 +22,10 @@ Throughout these projects I worked on:
 - Composition
 - Object Interaction
 - Problem Solving
+- Abstraction
+- polymorphism
+- SOLID principles
+- Collections
 
 ---
 
