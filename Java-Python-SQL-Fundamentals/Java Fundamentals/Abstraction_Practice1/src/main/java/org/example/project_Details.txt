@@ -1,0 +1,182 @@
+Project: Employee Management System
+Goal
+
+A company has different kinds of employees.
+
+Every employee can:
+
+start working
+stop working
+display their information
+
+However...
+
+Different employees work differently.
+
+So you'll use an abstract class.
+
+1. Abstract Parent Class
+Employee
+Attributes
+name
+employeeId
+department
+
+Keep them private.
+
+Constructor
+
+Receives:
+
+name
+employeeId
+department
+Normal Method
+getEmployeeInfo()
+
+Returns something like
+
+Employee:
+Name: Thato
+ID: 1001
+Department: IT
+Abstract Methods
+
+Notice...
+
+No implementation.
+
+startWork()
+stopWork()
+
+Every employee MUST know how to do these.
+
+2. Child Class
+Developer
+
+Extends Employee
+
+Extra attribute
+programmingLanguage
+
+Example
+
+Java
+Constructor
+
+Needs
+
+name
+employeeId
+department
+programmingLanguage
+
+Remember
+
+super(...)
+Override
+
+Implement
+
+startWork()
+
+Example output
+
+Developer starts coding in Java.
+
+Implement
+
+stopWork()
+
+Example
+
+Developer saved the project and stopped working.
+Own Method
+debugCode()
+
+Print
+
+Debugging application...
+3. Child Class
+Designer
+
+Extra attribute
+
+designTool
+
+Example
+
+Figma
+
+Override
+
+startWork()
+
+Output
+
+Designer starts designing using Figma.
+
+Override
+
+stopWork()
+
+Output
+
+Designer closed all design files.
+
+Own method
+
+createLogo()
+
+Print
+
+Creating a new logo...
+Main Class
+
+Create
+
+Developer
+
+and
+
+Designer
+
+Call
+
+getEmployeeInfo()
+
+startWork()
+
+their own special method
+
+stopWork()
+Example Output
+Employee:
+Name: Thato
+ID: 1001
+Department: IT
+
+Developer starts coding in Java.
+Debugging application...
+Developer saved the project and stopped working.
+
+------------------------
+
+Employee:
+Name: Sarah
+ID: 1002
+Department: Design
+
+Designer starts designing using Figma.
+Creating a new logo...
+Designer closed all design files.
+🎯 What you're practicing
+
+By the end of this project, you'll have used:
+
+✅ Encapsulation → private attributes.
+✅ Inheritance → Developer extends Employee.
+✅ Abstraction → abstract Employee class with abstract methods.
+✅ Constructors → super(...) to initialize the parent.
+✅ Method overriding → each child provides its own implementation of startWork() and stopWork().
+✅ Unique child behavior → debugCode() and createLogo().
