@@ -39,6 +39,7 @@ Throughout these projects I worked on:
 | Library Book | Models books in a library system. | Inheritance, OOP |
 | Smartphone | Simulates smartphone functionality. | Constructors, Object Design |
 | Online Store | Basic Online store system- Login and cart functionality | Object state, Constructors, Inheritance, Composition|
+|Student Grade Manager | Concepts practiced: Loops, Collections-Arrays, Array lists, Maps|
 
 ---
 
