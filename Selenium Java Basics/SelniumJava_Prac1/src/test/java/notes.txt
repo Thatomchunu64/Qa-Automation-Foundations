@@ -1,0 +1,184 @@
+Ahhh — this is actually a very useful thing to notice, because you've just run into the difference between a class and an interface in Java.
+
+You tried:
+
+WebDriver driver = new WebDriver()
+
+and IntelliJ generated:
+
+@Override
+public void get(String url) {
+
+}
+
+
+@Override
+public String getCurrentUrl() {
+    return "";
+}
+
+
+@Override
+public String getTitle() {
+    return "";
+}
+
+
+@Override
+public List<WebElement> findElements(By by) {
+    return List.of();
+}
+
+
+@Override
+public WebElement findElement(By by) {
+    return null;
+}
+Why did IntelliJ do this?
+
+Because WebDriver is an interface, not a normal class.
+
+An interface basically says:
+
+"Any class that implements me must provide these methods."
+
+So WebDriver defines things like:
+
+get()
+getCurrentUrl()
+getTitle()
+findElement()
+findElements()
+close()
+quit()
+...
+
+But WebDriver itself doesn't provide the actual implementation for those operations.
+
+That's why when you tried:
+
+new WebDriver()
+
+IntelliJ essentially said:
+
+"Okay, you're trying to create something that implements WebDriver, so I'll create an anonymous implementation and give you all the methods you're required to implement."
+
+That's what this syntax means:
+
+new WebDriver() {
+    @Override
+    public void get(String url) {
+    }
+
+    ...
+};
+
+You're creating an anonymous class that implements WebDriver.
+
+This is why we normally do this:
+WebDriver driver = new ChromeDriver();
+
+Notice the difference:
+
+WebDriver      driver       =       new ChromeDriver();
+   ↑             ↑                    ↑
+ interface     reference          actual object
+                variable
+
+ChromeDriver is an actual class that implements the WebDriver interface.
+
+So ChromeDriver provides the actual implementation of:
+
+get()
+findElement()
+getTitle()
+quit()
+...
+
+And that's why Selenium can actually control Chrome.
+
+Think about your Car example
+
+You had:
+
+Car carDetail = new Car("BMW", 2009);
+
+If Car is a normal class, Java can do:
+
+new Car(...)
+
+because Car provides an implementation.
+
+But imagine you had:
+
+interface Vehicle {
+    void drive();
+    void brake();
+}
+
+You can't normally do:
+
+Vehicle vehicle = new Vehicle();
+
+because Java doesn't know how drive() and brake() are supposed to work.
+
+Instead:
+
+class Car implements Vehicle {
+
+
+    @Override
+    public void drive() {
+        // actual implementation
+    }
+
+
+    @Override
+    public void brake() {
+        // actual implementation
+    }
+}
+
+Then:
+
+Vehicle vehicle = new Car();
+
+Now it works.
+
+And that's essentially what Selenium is doing:
+
+             WebDriver
+             INTERFACE
+                 │
+       defines required methods
+                 │
+        ┌────────┴────────┐
+        ↓                 ↓
+ ChromeDriver       FirefoxDriver
+    CLASS                CLASS
+        │                 │
+        └───────┬─────────┘
+                ↓
+       actual implementations
+
+So when you write:
+
+WebDriver driver = new ChromeDriver();
+
+you're saying:
+
+"I want to work with this object through the general WebDriver interface, but the actual object I'm creating is a ChromeDriver."
+
+And this is actually a really important Selenium concept.
+
+It also explains why earlier you were correct when you said:
+
+"WebDriver is the type and driver is the variable."
+
+Yes.
+
+But now you've discovered an extra layer:
+
+WebDriver is the interface/type, driver is the reference variable, and ChromeDriver is the actual class whose object is being created.
+
+That distinction will come up constantly in Java and Selenium.
